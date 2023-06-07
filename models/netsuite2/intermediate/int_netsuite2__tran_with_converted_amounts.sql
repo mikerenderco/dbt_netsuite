@@ -45,8 +45,8 @@ transactions_in_every_calculation_period_w_exchange_rates as (
 transactions_with_converted_amounts as (
   select
     transactions_in_every_calculation_period_w_exchange_rates.*,
-    unconverted_amount * exchange_rate_transaction_period as converted_amount_using_transaction_accounting_period,
-    unconverted_amount * exchange_rate_reporting_period as converted_amount_using_reporting_month,
+    unconverted_amount * 1 as converted_amount_using_transaction_accounting_period,
+    unconverted_amount * 1 as converted_amount_using_reporting_month,
     case
       when lower(accounts.type_name) in ('income','other income','expense','other expense','other income','cost of goods sold') then true
       else false 
